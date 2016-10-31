@@ -40,8 +40,10 @@ var Book = new mongoose.Schema({
 ```
 ## Wireframes ##
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/home.jpg)
-![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/personal-library.png)
-![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/book-slug.png)
+
+![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/personal-library.jpg)
+
+![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/book-slug.jpg)
 
 ## Site map ##
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/SiteMap.png)
