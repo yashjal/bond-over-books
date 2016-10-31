@@ -39,7 +39,7 @@ var Book = new mongoose.Schema({
 });
 ```
 ## Wireframes ##
-
+![ScreenShot](https://raw.github.com/yashjal/yj627-final-project/master/documentation/home.jpg)
 
 
 ## Site map ##
