@@ -58,7 +58,10 @@ var Book = new mongoose.Schema({
 
 ## User Stories ##
 
-
+1. as a user, I have a library of books with 0 or more books in it
+2. as a user, I can add/delete books from my library
+3. as a user, I can view books from others' libraries
+4. as a user, I can open any book and have a discussion about the book with other users
 
 ## Research Topics ##
 
