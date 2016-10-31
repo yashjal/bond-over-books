@@ -39,16 +39,26 @@ var Book = new mongoose.Schema({
 });
 ```
 ## Wireframes ##
+
+/home - page lists all the books ever posted by any user (arranged by date created)
+
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/home.jpg)
 
+/modify-library - page for modifying user's personal library
+
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/personal-library.jpg)
+
+/books/slug - each book has its own page where users can have discussions about the book
 
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/book-slug.jpg)
 
 ## Site map ##
+
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/SiteMap.png)
 
 ## User Stories ##
+
+
 
 ## Research Topics ##
 
