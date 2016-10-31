@@ -39,8 +39,7 @@ var Book = new mongoose.Schema({
 });
 ```
 ## Wireframes ##
-![ScreenShot](https://raw.github.com/yashjal/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/master/documentation/home.jpg)
-
+![ScreenShot](https://raw.github.com/yashjal/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/home.jpg)
 
 ## Site map ##
 
