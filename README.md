@@ -65,4 +65,5 @@ var Book = new mongoose.Schema({
 
 ## Research Topics ##
 
-
+* (6 points) Implement sign in with provider, such as FB Connect, Google, etc.
+* 
