@@ -6,8 +6,8 @@ In the home page, each user will be able to see and comment on all the books
 that belong in someone's library. Essentially, it's a platform for book lovers.
 
 ## Data Model ##
-We simply have to store a collection of books and each books will be 
-referred to by a user.
+We simply have to store a collection of books and each book will be reference
+the owner/user.
 
 First draft Schema:
 ```javascript
