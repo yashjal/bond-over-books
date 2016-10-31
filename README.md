@@ -7,7 +7,7 @@ that belong in someone's library. Essentially, it's a platform for book lovers.
 
 ## Data Model ##
 
-```
+```javascript
 // users
 // * our site requires authentication...
 // * so users have a username and password
