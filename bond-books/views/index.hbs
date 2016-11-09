@@ -1,2 +1,12 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Bond Over Books</h1>
+
+<p> Add a Book </p>
+<p><br><form method="POST" action="/books-add"> Name of book
+	<input type="text" name="title"><br> Author/Writer
+	<input type="text" name="author"><br>
+	<input type="submit" value="Add book">
+</form></p>
+
+<p><br>{{#each books}}
+	{{title}} - {{author}}<br>
+{{/each}}</p>
