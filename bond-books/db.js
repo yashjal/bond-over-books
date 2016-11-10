@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
 var URLSlugs = require('mongoose-url-slugs');
 
-//var User = new mongoose.Schema({
-//  library:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
-//});
+var User = new mongoose.Schema({
+	google: {
+	  id: String,
+	  token: String,
+	  email: String,
+	  name: String
+	}
+	//library:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
+});
 
 var Book = new mongoose.Schema({
   //user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
@@ -18,6 +24,7 @@ var Book = new mongoose.Schema({
 });
 
 mongoose.model('Book', Book);
+mongoose.model('User', User);
 
 // is the environment variable, NODE_ENV, set to PRODUCTION? 
 if (process.env.NODE_ENV == 'PRODUCTION') {

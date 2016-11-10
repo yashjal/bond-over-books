@@ -8,5 +8,9 @@
 </form></p>
 
 <p><br>{{#each books}}
+	<form method="POST" action="/books-remove">
+	<input type="checkbox" name="book" value="{{_id}}">
 	{{title}} - {{author}}<br>
-{{/each}}</p>
+{{/each}}
+<input type="submit" value="Delete">
+</form></p>
