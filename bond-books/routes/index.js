@@ -3,7 +3,6 @@ var router = express.Router();
 require(__dirname + '/../db.js');
 var mongoose = require('mongoose');
 var Book = mongoose.model('Book');
-var passport = mongoose.model('passport');
 
 router.get('/books', function(req, res, next) {
 	var books = Book.find({}, function(err,books,count) {
