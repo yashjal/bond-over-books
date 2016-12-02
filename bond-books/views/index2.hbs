@@ -1,0 +1,16 @@
+<h1> {{boo.title}} - {{boo.author}} </h1>
+
+{{#each boo.comments}}
+<div class="comments">{{this}}</div>
+{{/each}}
+
+
+{{#if showForm}}
+<textarea rows="3" cols="50" name="comm" placeholder="Add your comment here..." form="commentForm">
+</textarea>
+
+<form method="POST" action="" id="commentForm">
+	<input type="submit" value="Post">
+</form>
+{{/if}}
+

@@ -1,5 +1,8 @@
 <h1>Bond Over Books</h1>
 
+<h2>{{username}}'s Library</h2>
+
+{{#if showForm}}
 <p> Add a Book </p>
 <p><br><form method="POST" action="/books-add"> Name of book
 	<input type="text" name="title"><br> Author/Writer
@@ -10,7 +13,8 @@
 <p><br>{{#each books}}
 	<form method="POST" action="/books-remove">
 	<input type="checkbox" name="book" value="{{_id}}">
-	{{title}} - {{author}}<br>
+	<a href="/books/{{slug}}">{{title}} - {{author}}</a><br>
 {{/each}}
 <input type="submit" value="Delete">
 </form></p>
+{{/if}}

@@ -1,27 +1,26 @@
 var mongoose = require('mongoose');
 var URLSlugs = require('mongoose-url-slugs');
+var passportLocalMongoose = require('passport-local-mongoose');
 
 var User = new mongoose.Schema({
-	google: {
-	  id: String,
-	  token: String,
-	  email: String,
-	  name: String
-	}
-	//library:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
+  books: [{type: mongoose.Schema.Types.ObjectId, ref: 'Book'}]
 });
 
+User.plugin(passportLocalMongoose);
+
 var Book = new mongoose.Schema({
-  //user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+  user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
   title: {type: String, required: true},
   author: {type: String, required: true},
   //publisher: {type: String, required: false},
   //edition: {type: String, required: false},
-  //comments: {type: [String], required: false},
+  comments: {type: [String], required: false},
   //image_url: {type: String, required: false},
   //createdAt: {type: Date, required: false},
   //genre: {type: String, required: false}
 });
+
+Book.plugin(URLSlugs('title author'));
 
 mongoose.model('Book', Book);
 mongoose.model('User', User);
