@@ -8,11 +8,10 @@ a {
 }
 
 .comments {
-  background-color: lightgrey;
     min-height: 50px;
     min-width: 50px;
     margin: 25px;
-    border: 5px solid red;
+    border: 2px solid black;
     height:auto;
     padding: 10px;
 }

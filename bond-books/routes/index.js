@@ -7,13 +7,12 @@ var Book = mongoose.model('Book');
 var User = mongoose.model('User');
 
 router.get('/', function(req,res,next) {
-	/*var books = Book.find({}, function(err,books,count) {
+	Book.find({}, function(err,books,count) {
 		if (!err) {
-			res.render('index.hbs', {books: books});
+			res.render('main.hbs', {books: books, user: req.user});
 		}
-	});*/
+	});
 
-	res.send('<h2> Main Page: Under Construction </h2>');
 });
 
 
@@ -21,7 +20,9 @@ router.get('/books/:slug', function(req,res,next) {
 	Book.findOne({slug: req.params.slug}, function(err,book,count) {
 		if (!err) {
 			var showForm = !!req.user;
-			res.render('index2.hbs',{boo: book, showForm:showForm, user: req.user});
+			User.findById(book.user,function(err,usr,count) {
+				res.render('index2.hbs',{boo: book, showForm:showForm, user: req.user, usr:usr});
+			});
 		}
 	});
 });
