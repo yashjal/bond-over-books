@@ -65,15 +65,19 @@ router.post('/books/:slug', function(req,res,next) {
 router.get('/user/:username', function(req, res, next) {
 	User.findOne({username: req.params.username})
 	.populate('books').exec(function(err, user) {
-		if (!err) {
-				var showForm = !!req.user;
-				if (showForm) {
-					showForm = req.user.username == user.username;
-				}
-				res.render('index.hbs', {showForm: showForm, books: user.books, username: user.username, user: req.user});
+		if (user === null) {
+			var err1 = new Error('Not Found');
+			err1.status = 404;
+			res.status = 404;
+			res.render('error.hbs', {message: err1.message,error:{}});
+		} else {
+			var showForm = !!req.user;
+			if (showForm) {
+				showForm = req.user.username == user.username;
 			}
+			res.render('index.hbs', {showForm: showForm, books: user.books, username: user.username, user: req.user});
+		}
 	});
-
 });
 
 router.post('/books-add', function(req, res, next) {
