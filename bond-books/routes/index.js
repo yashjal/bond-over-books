@@ -34,7 +34,12 @@ router.get('/', function(req,res,next) {
 
 router.get('/books/:slug', function(req,res,next) {
 	Book.findOne({slug: req.params.slug}, function(err,book,count) {
-		if (!err) {
+		if (book === null) {
+			var err1 = new Error('Not Found');
+			err1.status = 404;
+			res.status = 404;
+			res.render('error.hbs', {message: err1.message,error:{}});
+		} else {
 			var showForm = !!req.user;
 			User.findById(book.user,function(err,usr,count) {
 				res.render('index2.hbs',{boo: book, showForm:showForm, user: req.user, usr:usr});
