@@ -65,5 +65,5 @@ var Book = new mongoose.Schema({
 
 ## Research Topics ##
 
-* (6 points) Implement sign in with provider, such as FB Connect, Google, etc.
-* ...
+* (6 points) User Authentication: sign-up and registeration
+* (2 points) Client side form validation: errors integrated into the DOM, displaying errors with alert
