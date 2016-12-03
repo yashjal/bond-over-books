@@ -17,4 +17,8 @@
 {{/each}}
 <input type="submit" value="Delete">
 </form></p>
+{{else}}
+{{#each books}}
+	<a href="/books/{{slug}}">{{title}} - {{author}}</a><br>
+{{/each}}
 {{/if}}

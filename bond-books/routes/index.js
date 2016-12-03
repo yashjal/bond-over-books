@@ -21,7 +21,7 @@ router.get('/books/:slug', function(req,res,next) {
 	Book.findOne({slug: req.params.slug}, function(err,book,count) {
 		if (!err) {
 			var showForm = !!req.user;
-			res.render('index2.hbs',{boo: book, showForm:showForm});
+			res.render('index2.hbs',{boo: book, showForm:showForm, user: req.user});
 		}
 	});
 });
@@ -46,7 +46,7 @@ router.get('/user/:username', function(req, res, next) {
 				if (showForm) {
 					showForm = req.user.username == user.username;
 				}
-				res.render('index.hbs', {showForm: showForm, books: user.books, username: user.username});
+				res.render('index.hbs', {showForm: showForm, books: user.books, username: user.username, user: req.user});
 			}
 	});
 
