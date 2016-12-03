@@ -9,7 +9,23 @@ var User = mongoose.model('User');
 router.get('/', function(req,res,next) {
 	Book.find({}, function(err,books,count) {
 		if (!err) {
-			res.render('main.hbs', {books: books, user: req.user});
+			if (Array.isArray(books)) {
+				//sort alphabetically by title
+				var mapped = books.map(function(el, i) {
+  					return { index: i, value: el.title.toLowerCase() };
+				});
+
+				mapped.sort(function(a, b) {
+  					return +(a.value > b.value) || +(a.value === b.value) - 1;
+				});
+
+				var result = mapped.map(function(el){
+  					return books[el.index];
+				});
+				res.render('main.hbs',{books: result, user: req.user});
+			} else {
+				res.render('main.hbs', {books: books, user: req.user});
+			}
 		}
 	});
 
@@ -35,6 +51,8 @@ router.post('/books/:slug', function(req,res,next) {
 				res.redirect('/books/'+req.params.slug);
 			}
 		});
+	} else {
+		res.redirect('/books/'+req.params.slug);
 	}
 	
 });
@@ -54,6 +72,7 @@ router.get('/user/:username', function(req, res, next) {
 });
 
 router.post('/books-add', function(req, res, next) {
+
 	new Book({
 		title: req.body.title,
 		author: req.body.author,
@@ -120,14 +139,8 @@ router.get('/register', function(req,res,next) {
 });
 
 router.post('/login', function(req,res,next) {
-  // NOTE: use the custom version of authenticate so that we can
-  // react to the authentication result... and so that we can
-  // propagate an error back to the frontend without using flash
-  // messages
   passport.authenticate('local', function(err,user) {
     if(user) {
-      // NOTE: using this version of authenticate requires us to
-      // call login manually
       req.logIn(user, function(err) {
         res.redirect('/user/' + user.username);
       });
@@ -135,20 +148,14 @@ router.post('/login', function(req,res,next) {
       res.render('login.hbs', {message:'Your login or password is incorrect.'});
     }
   })(req, res, next);
-  // NOTE: notice that this form of authenticate returns a function that
-  // we call immediately! See custom callback section of docs:
-  // http://passportjs.org/guide/authenticate/
 });
 
 router.post('/register', function(req, res) {
   User.register(new User({username:req.body.username}), 
       req.body.password, function(err, user){
     if (err) {
-      // NOTE: error? send message back to registration...
       res.render('register.hbs',{message:'Your username or password is already taken'});
     } else {
-      // NOTE: once you've registered, you should be logged in automatically
-      // ...so call authenticate if there's no error
       passport.authenticate('local')(req, res, function() {
         res.redirect('/user/' + req.user.username);
       });

@@ -5,9 +5,9 @@
 {{#if showForm}}
 <p> Add a Book </p>
 <p><br><form method="POST" action="/books-add"> Name of book
-	<input type="text" name="title"><br> Author/Writer
-	<input type="text" name="author"><br>
-	<input type="submit" value="Add book">
+	<input type="text" name="title" id="tit"><br> Author/Writer
+	<input type="text" name="author" id="aut"><br>
+	<input type="submit" value="Add book" id="addBook">
 </form></p>
 
 <p><br>{{#each books}}
@@ -15,10 +15,42 @@
 	<input type="checkbox" name="book" value="{{_id}}">
 	<a href="/books/{{slug}}">{{title}} - {{author}}</a><br>
 {{/each}}
-<input type="submit" value="Delete">
+<input type="submit" value="Delete" id="remBook">
 </form></p>
 {{else}}
 {{#each books}}
 	<a href="/books/{{slug}}">{{title}} - {{author}}</a><br>
 {{/each}}
 {{/if}}
+
+<script>
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+	var ab = document.getElementById('addBook');
+	ab.addEventListener('click', handleAdd);
+
+	var rb = document.getElementById('remBook');
+	rb.addEventListener('click', handleRem);
+
+	function handleAdd(evt) {
+		var x = document.getElementById('tit').value;
+		var y = document.getElementById('aut').value;
+		if (x === '' || y === '') {
+			evt.preventDefault();
+			alert('All blanks should be filled...');
+		}
+	}
+
+	function handleRem(evt) {
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+		if (!checkedOne) {
+			evt.preventDefault();
+			alert('At least one tick needed...');
+		}
+	}
+}
+
+
+</script>
