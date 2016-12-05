@@ -28,11 +28,13 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
 	var ab = document.getElementById('addBook');
-	ab.addEventListener('click', handleAdd);
-
+	if (ab !== null) {
+	  ab.addEventListener('click', handleAdd);
+	}
 	var rb = document.getElementById('remBook');
-	rb.addEventListener('click', handleRem);
-
+	if (rb !== null) {
+	  rb.addEventListener('click', handleRem);
+	}
 	function handleAdd(evt) {
 		var x = document.getElementById('tit').value;
 		var y = document.getElementById('aut').value;
