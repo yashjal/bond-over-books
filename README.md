@@ -9,7 +9,7 @@ that belong in someone's library. Essentially, it's a platform for book lovers.
 We simply have to store a collection of books and each book will be reference
 the owner/user.
 
-First draft Schema:
+Schema:
 ```javascript
 // users
 // * our site requires authentication...
@@ -18,24 +18,17 @@ First draft Schema:
 // one personal library
 var User = new mongoose.Schema({
   // username, password provided by plugin
-  library:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
+  books:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
 });
 
 // a book in a library
-// * includes a title, author, publisher, edition,
-// image, and a genre
+// * includes a title, author
 // * each book has a discussion/comments section,
 // where people can talk about the book
 var Book = new mongoose.Schema({
   user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
   title: {type: String, required: true},
   author: {type: String, required: false},
-  publisher: {type: String, required: false},
-  edition: {type: String, required: false},
-  discussion/comments: {type: [String], required: true},
-  image_url: {type: String, required: false},
-  createdAt: {type: Date, required: true},
-  genre: {type: String, required: true}
 });
 ```
 ## Wireframes ##
@@ -44,11 +37,11 @@ var Book = new mongoose.Schema({
 
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/home.jpg)
 
-/modify-library - page for modifying user's personal library
+/user/:user - page for modifying user's personal library
 
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/personal-library.jpg)
 
-/books/slug - each book has its own page where users can have discussions about the book
+/books/:slug - each book has its own page where users can have discussions about the book
 
 ![ScreenShot](https://github.com/nyu-csci-ua-0480-001-fall-2016/yj627-final-project/blob/master/documentation/book-slug.jpg)
 
