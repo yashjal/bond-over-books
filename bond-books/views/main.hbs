@@ -1,8 +1,13 @@
 <h1>Bond Over Books</h1>
 
+<div> <a href="/">Sort by title</a> </div>
+<div> <a href="/sorted">Sort by author</a> </div>
+
+
 <h2>Our Library</h2>
 
 {{#each books}}
-<div> <a href="/books/{{slug}}">{{title}} - {{author}}</a> </div>
+<div class="books"> <a href="/books/{{slug}}">{{title}} - {{author}}</a> </div>
 {{/each}}
+
 

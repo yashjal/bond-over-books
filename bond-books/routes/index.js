@@ -177,4 +177,30 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+router.get('/sorted', function(req,res,next) {
+	Book.find({}, function(err,books,count) {
+		if (!err) {
+			if (Array.isArray(books)) {
+				//sort alphabetically by author
+				var mapped = books.map(function(el, i) {
+  					return { index: i, value: el.author.toLowerCase() };
+				});
+
+				mapped.sort(function(a, b) {
+  					return +(a.value > b.value) || +(a.value === b.value) - 1;
+				});
+
+				var result = mapped.map(function(el){
+  					return books[el.index];
+				});
+				res.render('main.hbs',{books: result, user: req.user});
+			} else {
+				res.render('main.hbs', {books: books, user: req.user});
+			}
+		}
+	});
+
+});
+
+
 module.exports = router;
