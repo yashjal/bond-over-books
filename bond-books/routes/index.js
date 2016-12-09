@@ -11,6 +11,7 @@ router.get('/', function(req,res,next) {
 		if (!err) {
 			if (Array.isArray(books)) {
 				//sort alphabetically by title
+	//src: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 				var mapped = books.map(function(el, i) {
   					return { index: i, value: el.title.toLowerCase() };
 				});
@@ -182,6 +183,7 @@ router.get('/sorted', function(req,res,next) {
 		if (!err) {
 			if (Array.isArray(books)) {
 				//sort alphabetically by author
+	//src: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 				var mapped = books.map(function(el, i) {
   					return { index: i, value: el.author.toLowerCase() };
 				});
